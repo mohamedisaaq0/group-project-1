@@ -1,5 +1,6 @@
 .nav-elements {
     display: flex;
+
   }
 
 
@@ -14,12 +15,7 @@
   margin-bottom: 5px;
 }
 
-.button-position {
-  transform-origin: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 @media screen and (max-width: 1030px) {
     .title-container{
