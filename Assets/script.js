@@ -8,10 +8,8 @@ const searchButton = document.getElementById('search-button');
 const handleSearchButtonClick = (event) => {
     event.preventDefault();
     console.log("button clicked");
-    
 
-    localStorage.setItem("previous search", searchInput.value);
-
+    initialiseLocalStorage();
     resultsFor();
     renderResults();
 }
@@ -96,6 +94,9 @@ saveButton.append(strongTagSave)
 
 }
 
+const initialiseLocalStorage = () => {
+    localStorage.setItem("previous search", searchInput.value);
+}
 
 
 searchButton.addEventListener("click", handleSearchButtonClick);
