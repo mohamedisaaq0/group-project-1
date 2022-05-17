@@ -5,119 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="./Assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
     <title>Book Search</title>
 </head>
 <body>
     <nav class="navbar has-shadow is-white is-flex-wrap-wrap ">
         <div class="navbar-brand title-container">
           <icon class="navbar-item">
-            <img src="./Assets/icon-book.png" alt="Book icon" style="max-height: 75px">
+            <img src="./assets/icon-book.png" alt="Book icon" style="max-height: 75px">
           </icon>
           <h1 class="title is-2 mt-5">Book Search</h1>
         </div>
         
         <div class="navbar-end nav-elements">
             <a href="#previous-search" class="navbar-item">
-              Saved Books
+              <strong>Saved Books</strong>
             </a>
             <a href="./assets/about-us.html" class="navbar-item">
-                About Us
+                <strong>About Us</strong>
               </a>
         </div>
       </nav>
       <div class="section content-container">
           <div class="input-container">
-            <input class="input is-large is-rounded" style="justify-content: center;" type="text" placeholder="Search by book, ISBN, or Author...">
+            <input class="input is-large is-rounded" id="search-input" style="justify-content: center;" type="text" placeholder="Search by book, ISBN, or Author...">
             </div>
-        <div class="is-centered button-position" >
-            <button class="button is-large is-rounded has-text-centered "><strong>Search</strong></button>
+        <div class="is-centered button-position">
+            <button class="button is-large is-rounded has-text-centered" id="search-button" type="submit"><strong>Search</strong></button>
         </div>
       </div>
-
-      <div class="section">
-        <h2 class="title is-2">Results for <span id="user-input"></span>...</h2>
-      </div>
-
-
-      <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="https://lumiere-a.akamaihd.net/v1/images/p_thejunglebook2016_19751_6b8cfcec.jpeg" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>title Name</strong> 
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-              </p>
-            </div>
-            <button class="button is-dark"><strong>Select</strong></button>
-          </div>
-          
-        </article>
-    </div>
-    <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="https://lumiere-a.akamaihd.net/v1/images/p_thejunglebook2016_19751_6b8cfcec.jpeg" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>title Name</strong> 
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-              </p>
-            </div>
-            <button class="button is-dark"><strong>Select</strong></button>
-          </div>
-          
-        </article>
-    </div><div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="https://lumiere-a.akamaihd.net/v1/images/p_thejunglebook2016_19751_6b8cfcec.jpeg" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>title Name</strong> 
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-              </p>
-            </div>
-            <button class="button is-dark"><strong>Select</strong></button>
-          </div>
-          
-        </article>
-    </div>
-    <div class="box">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-64x64">
-              <img src="https://lumiere-a.akamaihd.net/v1/images/p_thejunglebook2016_19751_6b8cfcec.jpeg" alt="Image">
-            </figure>
-          </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>title Name</strong> 
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-              </p>
-            </div>
-            <button class="button is-dark"><strong>Select</strong></button>
-          </div>
-          
-        </article>
-    </div>
+    <script src="./assets/script.js"></script>
 </body>
 </html>
