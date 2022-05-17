@@ -7,7 +7,6 @@ const searchButton = document.getElementById('search-button');
 
 const handleSearchButtonClick = (event) => {
     event.preventDefault();
-    console.log("button clicked");
 
     initialiseLocalStorage();
     resultsFor();
@@ -16,7 +15,6 @@ const handleSearchButtonClick = (event) => {
 
 
 const resultsFor = () => {
-
 // creating elements 
 const divResultsFor = document.createElement("div");
 divResultsFor.setAttribute("class", "section");
@@ -24,16 +22,15 @@ const resultTitle = document.createElement("h2");
 resultTitle.setAttribute("class", "title");
 resultTitle.classList.add("is-2");
 resultTitle.textContent = "Results for " + searchInput.value + "...";
+searchInput.value = ''
 
 // appending element into each other
 body.append(divResultsFor);
 divResultsFor.append(resultTitle);
-
-
 }
 
-const renderResults = () => {
 
+const renderResults = () => {
 // creating Elements to render results dynamically
 const divContainer = document.createElement("div");
 divContainer.setAttribute("class", "box");
@@ -57,7 +54,7 @@ titleName.setAttribute("id", "title-name")
 titleName.textContent = searchInput.value
 const brTag = document.createElement("br");
 const spanTag = document.createElement("span");
-spanTag.textContent = "sdabgaidufbgaidsubfgaisdubfiasbfalsjbflajshdbflajsdhbvaljshbvjhafbvlhajfbvafbva;fkbvkadfsv"
+spanTag.textContent = ""
 spanTag.setAttribute("id", "descriptiond")
 const divButton = document.createElement("div");
 const selectButton = document.createElement("button");
