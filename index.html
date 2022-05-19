@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
     <title>Book Search</title>
-</head>
-<body>
-    <nav class="navbar has-shadow is-white is-flex-wrap-wrap ">
-        <div class="navbar-brand title-container">
-          <icon class="navbar-item">
-            <img src="./assets/icon-book.png" alt="Book icon" style="max-height: 75px">
-          </icon>
-          <h1 class="title is-2 mt-5">Book Search</h1>
-        </div>
-        
-        <div class="navbar-end nav-elements">
-            <a href="#previous-search" class="navbar-item">
-              <strong>Saved Books</strong>
-            </a>
-            <a href="./assets/about-us.html" class="navbar-item">
-                <strong>About Us</strong>
-              </a>
-        </div>
-      </nav>
-      <div class="section content-container">
-          <div class="input-container">
-            <input class="input is-large is-rounded" id="search-input" style="justify-content: center;" type="text" placeholder="Search by book name">
-            </div>
-        <div class="is-centered button-position">
-            <button class="button is-large is-rounded has-text-centered" id="search-button" type="submit"><strong>Search</strong></button>
-        </div>
-        <form id="form">
-        <div id="search-results"></div>
+  </head>
+  <body>
+    <nav class="navbar has-shadow is-white is-flex-wrap-wrap">
+      <div class="navbar-brand title-container">
+        <icon class="navbar-item">
+          <img
+            src="./assets/icon-book.png"
+            alt="Book icon"
+            style="max-height: 75px"
+          />
+        </icon>
+        <h1 class="title is-2 mt-5">Book Search</h1>
       </div>
-    </form>
+
+      <div class="navbar-end nav-elements">
+        <a href="#previous-search" class="navbar-item">
+          <strong>Saved Books</strong>
+        </a>
+        <a href="./assets/about-us.html" class="navbar-item">
+          <strong>About Us</strong>
+        </a>
+      </div>
+    </nav>
+    <div class="section content-container">
+      <div class="input-container">
+        <input
+          class="input is-large is-rounded"
+          id="search-input"
+          style="justify-content: center"
+          type="text"
+          placeholder="Search by book name"
+        />
+      </div>
+      <div class="is-centered button-position">
+        <button
+          class="button is-large is-rounded has-text-centered"
+          id="search-button"
+          type="button"
+          onclick="searchBooks()"
+        >
+          <strong>Search</strong>
+        </button>
+      </div>
+    </div>
+    <div id="search-results"></div>
     <script src="./assets/script.js"></script>
-</body>
+  </body>
 </html>

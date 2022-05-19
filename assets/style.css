@@ -1,8 +1,6 @@
 .nav-elements {
-    display: flex;
-
-  }
-
+  display: flex;
+}
 
 .content-container {
   padding-top: 200px;
@@ -22,12 +20,13 @@
   justify-content: center;
 }
 
-#select-button, #save-button{
+#select-button,
+#save-button {
   margin: 5px;
 }
 
 .title-name {
-  text-decoration: underline ;
+  text-decoration: underline;
 }
 
 .image.is-150x115 {
@@ -43,23 +42,18 @@ li {
   list-style: none;
 }
 
-.container-results {
-  margin-bottom: 3px solid black;
-  background-color: yellow;
-}
-
 hr {
   background-color: black;
 }
 
 @media screen and (max-width: 1030px) {
-    .title-container{
-        display: flex;
-        justify-content: center;
-    }
-    .nav-elements {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-}
+  .title-container {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-elements {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
