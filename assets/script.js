@@ -1,115 +1,81 @@
 const body = document.body
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
+let searchTerm = ''
 
+window.addEventListener("load", () => {
+  const form = document.getElementById("form");
+  form.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+  searchBooks();
+  initialiseLocalStorage();
+});
 
+function searchBooks() {
+    
+    searchInput.addEventListener("change", (e) => {
+    searchTerm = e.target.value;
 
+    const searchResultsDiv = document.getElementById('search-results')
 
-const handleSearchButtonClick = (event) => {
-    event.preventDefault();
+    async function fetchingAPI() {
+        const api = await (await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)).json();
+        const bookInfos = api.items.map(info => {
+          if(info.volumeInfo.imageLinks) {
+            const { volumeInfo: {title, categories, authors, infoLink, publisher, imageLinks:{thumbnail}}} = info
+            return {
+              title,
+              categories,
+              authors,
+              infoLink,
+              publisher,
+              thumbnail,
+            }
+          } else {
+            const {volumeInfo: {title, categories, authors, infoLink, publisher}} = info
+            return {
+              title,
+              categories,
+              authors,
+              infoLink,
+              publisher
+            }
+          }
+        })        
+        let searchTermH1 = `<h1 class="title is-1"><strong>Your results for:<span> ${searchTerm}</span></strong>...</h1><br><br>`
+        let resultsHTML = '<section class="row">'
+        const placeholderImg = './img/book-placeholder.png'
+        bookInfos.forEach((info) => {
+          const resultHTML = `
+                <div class="">
+                    <h3 class="title is-4 title-name" id="title">${info.title}</h3>
+                    <a href="${info.infoLink}" target="_blank"><img class="image " src="${!info.thumbnail ? placeholderImg : info.thumbnail}" alt="${info.title}"></a>
+                    <br>
+                    <div>
+                        <h4>Author: <span>${info.authors}</span></h4>
+                        <h4>Category: <span>${info.categories}</span></h4>
+                        <h4>Publisher: <span>${info.publisher}</span></h4>
+                        <button class="button is-light">
+                        <a class="info-button" href="${info.infoLink}" target="_blank"><strong>More info</strong></a>
+                        </button>
+                        <button class="button is-light">
+                        <a class="info-button" href="${info.infoLink}" target="_blank"><strong>Select</strong></a>
+                        </button>
+                    </div>
+                    <br>
+                <div>
+              `
+              resultsHTML += resultHTML
 
-    initialiseLocalStorage();
-    searchFunction();
-    resultsFor();
-    renderResults();
-   
-}
-
-
-const resultsFor = () => {
-// creating elements 
-const divResultsFor = document.createElement("div");
-divResultsFor.setAttribute("class", "section");
-const resultTitle = document.createElement("h2");
-resultTitle.setAttribute("class", "title");
-resultTitle.classList.add("is-2");
-resultTitle.textContent = "Results for " + searchInput.value + "...";
-searchInput.value = ''
-
-// appending element into each other
-body.append(divResultsFor);
-divResultsFor.append(resultTitle);
-}
-
-
-const renderResults = () => {
-// creating Elements to render results dynamically
-const divContainer = document.createElement("div");
-divContainer.setAttribute("class", "box");
-const article = document.createElement("article");
-article.setAttribute("class", "media");
-const divArticle = document.createElement("div");
-divArticle.setAttribute("class", "media-left");
-const figure = document.createElement("figure");
-figure.setAttribute("class", "image");
-figure.classList.add('is-64x64');
-const img = document.createElement("img");
-img.src = "https://lumiere-a.akamaihd.net/v1/images/p_thejunglebook2016_19751_6b8cfcec.jpeg";
-img.alt = "book cover";
-const divMediaContent = document.createElement("div");
-divMediaContent.setAttribute("class", "media-content");
-const divContent = document.createElement("div");
-divContent.setAttribute("class", "content")
-const paragraph = document.createElement("p");
-const titleName = document.createElement("strong");
-titleName.setAttribute("id", "title-name")
-titleName.textContent = searchInput.value
-const brTag = document.createElement("br");
-const spanTag = document.createElement("span");
-spanTag.textContent = ""
-spanTag.setAttribute("id", "descriptiond")
-const divButton = document.createElement("div");
-const selectButton = document.createElement("button");
-selectButton.setAttribute("class", "button");
-selectButton.classList.add("is-dark");
-selectButton.setAttribute("id", "select-button");
-const strongTagSelect = document.createElement("strong");
-strongTagSelect.append("Select");
-const saveButton = document.createElement("button");
-saveButton.setAttribute("class", "button");
-saveButton.classList.add("is-dark");
-saveButton.setAttribute("id", "save-button");
-const strongTagSave = document.createElement("strong");
-strongTagSave.append("Save");
-
-
-// appending the elements into each other
-
-
-body.append(divContainer)
-divContainer.append(article);
-article.append(divArticle, divMediaContent);
-divArticle.append(figure)
-figure.append(img);
-divContent.append(paragraph);
-paragraph.append(titleName);
-paragraph.append(brTag);
-paragraph.append(spanTag);
-divMediaContent.append(divContent);
-divMediaContent.append(selectButton);
-divMediaContent.append(saveButton);
-selectButton.append(strongTagSelect);
-saveButton.append(strongTagSave)
-
-}
-
-const initialiseLocalStorage = () => {
-    localStorage.setItem("previous search", searchInput.value);
+       }) 
+       resultsHTML += '</section>'
+       searchResultsDiv.innerHTML = searchTermH1 + resultsHTML
+    }
+    searchInput.value = ""
+    fetchingAPI();
+    });
 }
 
 
 
-const searchFunction = () => {
-    let url1Google = "https://www.googleapis.com/books/v1/volumes?q=";
-    let urlforAPi = url1Google + searchInput.value
-
-   fetch(urlforAPi)
-   .then(response => response.text())
-   .then(result => console.log(result))
-   .catch(error => console.log('error', error));
-   }
-   
-
-
-
-searchButton.addEventListener("click", handleSearchButtonClick);

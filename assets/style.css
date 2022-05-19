@@ -25,6 +25,11 @@
 #select-button, #save-button{
   margin: 5px;
 }
+
+.title-name {
+  text-decoration: underline ;
+}
+
 @media screen and (max-width: 1030px) {
     .title-container{
         display: flex;
