@@ -3,10 +3,6 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const searchResultsDiv = document.getElementById("search-results");
 
-// function search() {
-//   console.log(searchInput.value);
-// }
-
 async function searchBooks(term) {
   let headers = {
     "Content-Type": "application/json",
@@ -26,6 +22,16 @@ async function searchBooks(term) {
 
 function fetchBook(isbn) {
   console.log(isbn);
+  const { response } = fetch(
+    ` https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}
+    `
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
 }
 
 function createBookList(books, term) {
@@ -72,8 +78,6 @@ function createBookList(books, term) {
   searchResultsDiv.innerHTML = searchTermH1 + resultsHTML;
 }
 
-// initialiseLocalStorage();
-// fetchBook();
 async function search() {
   const searchTerm = searchInput.value;
   if (searchTerm) {
@@ -81,7 +85,3 @@ async function search() {
     createBookList(books, searchTerm);
   }
 }
-
-const initialiseLocalStorage = () => {
-  localStorage.setItem("Previous Search", searchInput.value);
-};
