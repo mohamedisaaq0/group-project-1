@@ -30,6 +30,28 @@
   text-decoration: underline ;
 }
 
+.image.is-150x115 {
+  height: 150px;
+  width: 115px;
+}
+
+.image.is-150x115:hover {
+  transform: scale(1.2);
+}
+
+li {
+  list-style: none;
+}
+
+.container-results {
+  margin-bottom: 3px solid black;
+  background-color: yellow;
+}
+
+hr {
+  background-color: black;
+}
+
 @media screen and (max-width: 1030px) {
     .title-container{
         display: flex;
