@@ -46,6 +46,10 @@ hr {
   background-color: black;
 }
 
+.margin-title {
+  margin-left: 30px;
+}
+
 @media screen and (max-width: 1030px) {
   .title-container {
     display: flex;
