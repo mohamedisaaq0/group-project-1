@@ -20,18 +20,26 @@ async function searchBooks(term) {
   });
 }
 
-function fetchBook(isbn) {
+async function fetchBook(isbn) {
   console.log(isbn);
-  const { response } = fetch(
-    ` https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}
+  // removeResultDiv();
+  const items = "items";
+  const { api } = await (
+    await fetch(
+      ` https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}
     `
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    });
+    )
+  ).json();
+  return api.items.map((info) => {
+    return console.log(
+      ({
+        title,
+        authors,
+        description,
+        image: { thumbnail },
+      } = info)
+    );
+  });
 }
 
 function createBookList(books, term) {
@@ -85,3 +93,8 @@ async function search() {
     createBookList(books, searchTerm);
   }
 }
+
+const removeResultDiv = () => {
+  console.log("remove question");
+  searchResultsDiv.remove();
+};
