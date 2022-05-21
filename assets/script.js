@@ -2,10 +2,7 @@ const body = document.body;
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const searchResultsDiv = document.getElementById("search-results");
-
-// function search() {
-//   console.log(searchInput.value);
-// }
+const detailedBookDiv = document.getElementById("detailed-book");
 
 async function searchBooks(term) {
   let headers = {
@@ -20,13 +17,84 @@ async function searchBooks(term) {
     )
   ).json();
   return books.map((info) => {
-    return ({ title, authors, image, isbn } = info);
+    return ({ title, authors, image, isbn13 } = info);
   });
 }
 
-function fetchBook(isbn) {
-  console.log(isbn);
+async function fetchBook(isbn13) {
+  removeResultDiv();
+  removeSearchBox();
+  removeSearchButton();
+  const { items = [] } = await (
+    await fetch(
+      ` https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn13}
+    `
+    )
+  ).json();
+
+  return items.map((info) => {
+    const {
+      volumeInfo: {
+        title,
+        description,
+        authors,
+        imageLinks: { thumbnail },
+        averageRating,
+      },
+    } = info;
+
+    const formattedResponse = {
+      title,
+      authors,
+      description: description || "Not available",
+      thumbnail,
+      averageRating,
+    };
+
+    detail(formattedResponse);
+  });
 }
+
+const detail = (book) => {
+  const detailBook = `
+    <div class="margin-container">
+    <h1 class="title is-2 is book-name">${book.title}</h1>
+    <article class="media">
+      <div class="media-left">
+        <img
+          class="image is-250x200"
+          src="${book.thumbnail}"
+          alt="${book.title}"
+        />
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <h4>Description:</h4>
+          <p>
+            ${book.description}
+          </p>
+        </div>
+      </div>
+    </article>
+    <br />
+    <div>
+      <p class="is-large">
+        <strong>Author: </strong><span>${book.authors}</span>
+        <br />
+        <strong>Publisher: </strong> <span>${book.publisher}</span>
+        <br />
+        <strong>Average Ratings: </strong> <span>${book.averageRating}</span> out of 5
+      </p>
+
+      <button id="select" class="button is-danger save-button">
+        <strong>Save</strong>
+      </button>
+    </div>
+  </div>
+  `;
+
+  detailedBookDiv.innerHTML = detailBook;
+};
 
 function createBookList(books, term) {
   let searchTermH1 = `<h1 class="title is-1 margin-title"><strong>Your results for:<span> ${term}</span></strong>...</h1><br><br>`;
@@ -37,11 +105,9 @@ function createBookList(books, term) {
                 <div class="container-result"> 
                   <article class="media container-result">
                     <div class="media-left">
-                    <a href="${
-                      book.infoLink
-                    }" target="_blank"><img class="image is-150x115 " src="${
-      !book.image ? placeholderImg : book.image
-    }" alt="${book.title}"></a>
+                    <img class="image is-150x115 " src="${
+                      !book.image ? placeholderImg : book.image
+                    }" alt="${book.title}">
                     <br>
                   </div>
           <div class="media-content">
@@ -57,8 +123,8 @@ function createBookList(books, term) {
               </p>
             </div>
             <button id='select' class="button is-light" onclick='fetchBook(${
-              book.isbn
-            })'>Select
+              book.isbn13
+            })'><strong>Select</strong>
             </button>
           </div>
           
@@ -72,8 +138,6 @@ function createBookList(books, term) {
   searchResultsDiv.innerHTML = searchTermH1 + resultsHTML;
 }
 
-// initialiseLocalStorage();
-// fetchBook();
 async function search() {
   const searchTerm = searchInput.value;
   if (searchTerm) {
@@ -82,6 +146,15 @@ async function search() {
   }
 }
 
-const initialiseLocalStorage = () => {
-  localStorage.setItem("Previous Search", searchInput.value);
+const removeResultDiv = () => {
+  searchResultsDiv.remove();
+};
+
+const removeSearchBox = () => {
+  document.getElementById("search-box-container").remove();
+};
+
+const removeSearchButton = () => {
+  document.getElementById("search-button-container");
+  searchResultsDiv.remove();
 };
