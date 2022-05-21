@@ -38,6 +38,11 @@
   transform: scale(1.2);
 }
 
+.image.is-250x200 {
+  height: 290px;
+  width: 200px;
+}
+
 li {
   list-style: none;
 }
@@ -48,6 +53,27 @@ hr {
 
 .margin-title {
   margin-left: 30px;
+}
+
+.book-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-container {
+  margin: 50px;
+  margin-top: 50px;
+}
+
+.book-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-button {
+  margin-top: 10px;
+  width: 200px;
 }
 
 @media screen and (max-width: 1030px) {
