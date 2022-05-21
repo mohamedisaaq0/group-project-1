@@ -15,19 +15,18 @@
     <nav class="navbar has-shadow is-white is-flex-wrap-wrap">
       <div class="navbar-brand title-container">
         <icon class="navbar-item">
-          <a href="/">
+          <a href="./index.html">
             <img
               src="./assets/icon-book.png"
               alt="Book icon"
               style="max-height: 75px"
-            />
-          </a>
+          /></a>
         </icon>
         <h1 class="title is-2 mt-5">Book Search</h1>
       </div>
 
       <div class="navbar-end nav-elements">
-        <a href="./Savedbooks.html" class="navbar-item">
+        <a href="#previous-search" class="navbar-item">
           <strong>Saved Books</strong>
         </a>
         <a href="./assets/about-us.html" class="navbar-item">
@@ -35,29 +34,33 @@
         </a>
       </div>
     </nav>
-    <div class="section content-container" id="search-box-container">
-      <div class="input-container">
-        <input
-          class="input is-large is-rounded"
-          id="search-input"
-          style="justify-content: center"
-          type="text"
-          placeholder="Search by book name"
-        />
-      </div>
-      <div class="is-centered button-position" id="search-button-container">
-        <button
-          class="button is-large is-rounded has-text-centered"
-          id="search-button"
-          type="button"
-          onclick="search()"
-        >
-          <strong>Search</strong>
-        </button>
-      </div>
+
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <img
+            class="image is-150x115"
+            src="${
+!book.image ? placeholderImg : book.image
+}"
+            alt="${book.title}"
+          />
+          <br />
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>${book.title}</strong>
+              <br />
+              Author: <span>${book.authors}</span>
+              <br />
+              Publisher: <span>${book.publisher}</span>
+            </p>
+          </div>
+          <button id="save-button" class="button is-light">Remove</button>
+        </div>
+      </article>
     </div>
-    <div id="search-results"></div>
-    <div id="detailed-book"></div>
     <script src="./assets/script.js"></script>
   </body>
 </html>
