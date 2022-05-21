@@ -25,3 +25,12 @@
     flex-direction: column;
     padding: 0 10px;
 }
+.textwrap h1{
+    padding: 10px 0;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid black;
+    background-color: aquamarine;
+}
