@@ -3,6 +3,8 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const searchResultsDiv = document.getElementById("search-results");
 const detailedBookDiv = document.getElementById("detailed-book");
+const saveButton = document.getElementById("save-button");
+let booksList = [];
 
 async function searchBooks(term) {
   let headers = {
@@ -32,7 +34,7 @@ async function fetchBook(isbn13) {
     )
   ).json();
 
-  return items.map((info) => {
+  booksList = items.map((info) => {
     const {
       volumeInfo: {
         title,
@@ -52,7 +54,10 @@ async function fetchBook(isbn13) {
     };
 
     detail(formattedResponse);
+
+    return formattedResponse;
   });
+  console.log(booksList);
 }
 
 const detail = (book) => {
@@ -86,7 +91,7 @@ const detail = (book) => {
         <strong>Average Ratings: </strong> <span>${book.averageRating}</span> out of 5
       </p>
 
-      <button id="select" class="button is-danger save-button">
+      <button id="select" class="button is-danger save-button"  onclick="saveBook('${book.title}', 'test')">
         <strong>Save</strong>
       </button>
     </div>
@@ -157,4 +162,12 @@ const removeSearchBox = () => {
 const removeSearchButton = () => {
   document.getElementById("search-button-container");
   searchResultsDiv.remove();
+};
+
+const saveBook = (title) => {
+  const bookObject = booksList.find((book) => book.title === title);
+  const stringified = JSON.stringify(bookObject);
+  console.log(booksList, bookObject);
+
+  localStorage.setItem(title, stringified);
 };
