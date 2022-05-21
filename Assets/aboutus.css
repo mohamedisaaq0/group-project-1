@@ -5,3 +5,10 @@
 .para{
     font-size: 30px;
 }
+.name{
+    font-size: 45px;
+    font-family: 'Poppins', sans-serif;
+}
+.header{
+    border: 2px solid black;
+}
