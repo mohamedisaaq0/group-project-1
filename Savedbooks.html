@@ -35,34 +35,7 @@
       </div>
     </nav>
 
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <img
-            class="image is-150x115"
-            src="${
-!book.image ? placeholderImg : book.image
-}"
-            alt="${book.title}"
-          />
-          <br />
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>${book.title}</strong>
-              <br />
-              Author: <span>${book.authors}</span>
-              <br />
-              Publisher: <span>${book.publisher}</span>
-            </p>
-          </div>
-          <button id="save-button" class="button is-light">Remove</button>
-        </div>
-      </article>
-    </div>
-    <div id="search-results"></div>
-    <div id="detailed-book"></div>
+    <div id="saved-books"></div>
     <script src="./assets/savedBookscript.js"></script>
   </body>
 </html>
