@@ -1,6 +1,5 @@
 let booklist = "";
 const removeButton = document.getElementById("remove-button");
-
 const savedBooks = document.getElementById("saved-books");
 keys = Object.keys(localStorage);
 
@@ -30,7 +29,7 @@ function bookStorage() {
               Average ratings: <span>${stringifyBook.averageRating}</span>/5
             </p>
           </div>
-          <button id="remove-button" class="button is-light" onclick=>Remove</button>
+          <button id="remove-button" class="button is-light" onclick="Remove()">Remove</button>
         </div>
       </article>
       </div>
@@ -41,3 +40,7 @@ function bookStorage() {
 }
 
 bookStorage();
+
+const remove = () => {
+  localStorage.removeItem(keys);
+};
