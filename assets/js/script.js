@@ -58,7 +58,6 @@ async function fetchBook(isbn13) {
 
     return formattedResponse;
   });
-  console.log(booksList);
 }
 
 const detail = (book) => {
@@ -168,7 +167,5 @@ const removeSearchButton = () => {
 const saveBook = (title) => {
   const bookObject = booksList.find((book) => book.title === title);
   const stringified = JSON.stringify(bookObject);
-  console.log(booksList, bookObject);
-
   localStorage.setItem(title, stringified);
 };
