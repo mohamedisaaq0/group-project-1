@@ -40,6 +40,7 @@ async function fetchBook(isbn13) {
         title,
         description,
         authors,
+        publisher,
         imageLinks: { thumbnail },
         averageRating,
       },
@@ -48,9 +49,10 @@ async function fetchBook(isbn13) {
     const formattedResponse = {
       title,
       authors,
+      publisher: publisher || "Not available",
       description: description || "Not available",
       thumbnail,
-      averageRating,
+      averageRating: averageRating || "N/A",
     };
 
     detail(formattedResponse);

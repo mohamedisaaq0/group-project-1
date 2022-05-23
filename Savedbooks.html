@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Book Search</title>
   </head>
   <body>
@@ -26,43 +26,16 @@
       </div>
 
       <div class="navbar-end nav-elements">
-        <a href="#previous-search" class="navbar-item">
+        <a href="./Savedbooks.html" class="navbar-item">
           <strong>Saved Books</strong>
         </a>
-        <a href="./assets/about-us.html" class="navbar-item">
+        <a href="./About-us.html" class="navbar-item">
           <strong>About Us</strong>
         </a>
       </div>
     </nav>
 
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <img
-            class="image is-150x115"
-            src="${
-!book.image ? placeholderImg : book.image
-}"
-            alt="${book.title}"
-          />
-          <br />
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>${book.title}</strong>
-              <br />
-              Author: <span>${book.authors}</span>
-              <br />
-              Publisher: <span>${book.publisher}</span>
-            </p>
-          </div>
-          <button id="save-button" class="button is-light">Remove</button>
-        </div>
-      </article>
-    </div>
-    <div id="search-results"></div>
-    <div id="detailed-book"></div>
-    <script src="./assets/savedBookscript.js"></script>
+    <div id="saved-books"></div>
+    <script src="./assets/js/savedBookscript.js"></script>
   </body>
 </html>
