@@ -1,0 +1,93 @@
+nav {
+  margin-bottom: 30px;
+}
+
+.nav-elements {
+  display: flex;
+}
+
+.content-container {
+  padding-top: 200px;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.button-position {
+  transform-origin: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#select-button,
+#save-button {
+  margin: 5px;
+}
+
+.title-name {
+  text-decoration: underline;
+}
+
+.image.is-150x115 {
+  height: 150px;
+  width: 115px;
+}
+
+.image.is-150x115:hover {
+  transform: scale(1.2);
+}
+
+.image.is-250x200 {
+  height: 290px;
+  width: 200px;
+}
+
+li {
+  list-style: none;
+}
+
+hr {
+  background-color: black;
+}
+
+.margin-title {
+  margin-left: 30px;
+}
+
+.book-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-container {
+  margin: 50px;
+  margin-top: 50px;
+}
+
+.book-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-button {
+  margin-top: 10px;
+  width: 200px;
+}
+
+@media screen and (max-width: 1030px) {
+  .title-container {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-elements {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
