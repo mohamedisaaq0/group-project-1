@@ -3,7 +3,6 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const searchResultsDiv = document.getElementById("search-results");
 const detailedBookDiv = document.getElementById("detailed-book");
-const saveButton = document.getElementById("save-button");
 let booksList = [];
 
 async function searchBooks(term) {
@@ -93,7 +92,7 @@ const detail = (book) => {
         <strong>Average Ratings: </strong> <span>${book.averageRating}</span> out of 5
       </p>
 
-      <button id="select" class="button is-danger save-button"  onclick="saveBook('${book.title}', 'test')">
+      <button class="button is-danger save-button"  onclick="saveBook('${book.title}', 'test')">
         <strong>Save</strong>
       </button>
     </div>
