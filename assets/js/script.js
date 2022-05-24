@@ -103,7 +103,7 @@ const detail = (book) => {
 
 function createBookList(books, term) {
   let searchTermH1 = `<h1 class="title is-1 margin-title"><strong>Your results for:<span> ${term}</span></strong>...</h1><br><br>`;
-  let resultsHTML = '<div class="box">';
+  let resultsHTML = "<div>";
   const placeholderImg = "./img/book-placeholder.png";
   books.forEach((book) => {
     const resultHTML = `

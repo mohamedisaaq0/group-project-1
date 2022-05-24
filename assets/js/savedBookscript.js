@@ -5,7 +5,7 @@ keys = Object.keys(localStorage);
 
 function bookStorage() {
   let savedTitle = `<h1 class="title is-1 margin-title"><strong>Your Books:</strong></h1><br><br>`;
-  let booksList = '<div class="box">';
+  let booksList = "<div>";
   keys.forEach((key) => {
     const book = localStorage.getItem(key);
     const stringifyBook = JSON.parse(book);
