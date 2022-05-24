@@ -107,6 +107,7 @@ function createBookList(books, term) {
   const placeholderImg = "./img/book-placeholder.png";
   books.forEach((book) => {
     const resultHTML = `
+    <div class="box">
                 <div class="container-result"> 
                   <article class="media container-result">
                     <div class="media-left">
@@ -132,11 +133,10 @@ function createBookList(books, term) {
             })'><strong>Select</strong>
             </button>
           </div>
-          
         </article>
-        </br><hr>
     </div>
-              `;
+   </div>
+   `;
     resultsHTML += resultHTML;
   });
   resultsHTML += "</div>";
