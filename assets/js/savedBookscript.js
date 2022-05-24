@@ -29,7 +29,7 @@ function bookStorage() {
               <br />
               Author: <span>${stringifyBook.authors}</span>
               <br />
-              Average ratings: <span>${stringifyBook.averageRating}</span>/5
+              Average ratings: <span>${stringifyBook.averageRating}</span> out of 5
             </p>
           </div>
           <button id="remove-button" class="button is-light" onclick="removeBook()">Remove</button>
