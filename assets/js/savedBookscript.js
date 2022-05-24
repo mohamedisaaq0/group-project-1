@@ -4,10 +4,13 @@ const savedBooks = document.getElementById("saved-books");
 keys = Object.keys(localStorage);
 
 function bookStorage() {
+  let savedTitle = `<h1 class="title is-1 margin-title"><strong>Your Books:</strong></h1><br><br>`;
+  let booksList = '<div class="box">';
   keys.forEach((key) => {
     const book = localStorage.getItem(key);
     const stringifyBook = JSON.parse(book);
     console.log(stringifyBook);
+
     booklist = `
     <div class="box">
       <article class="media">
@@ -29,23 +32,15 @@ function bookStorage() {
               Average ratings: <span>${stringifyBook.averageRating}</span>/5
             </p>
           </div>
-          <button id="remove-button" class="button is-light" onclick="Remove()">Remove</button>
+          <button id="remove-button" class="button is-light" onclick="removeBook()">Remove</button>
         </div>
       </article>
       </div>
     `;
+    console.log(booklist);
+    booksList += booklist;
   });
-  savedBooks.innerHTML = booklist;
+  booksList += "</div>";
+  savedBooks.innerHTML = savedTitle + booksList;
 }
-
 bookStorage();
-
-const removeBook = () => {
-  const bookObject = keys.find((booklist) => booklist.title === title);
-  const stringified = JSON.stringify(bookObject);
-  console.log(booksList, bookObject);
-
-  localStorage.removeItem(title, stringified);
-};
-
-console.log(removeBook());
